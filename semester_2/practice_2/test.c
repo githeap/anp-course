@@ -26,7 +26,7 @@ static void test_array_pushback()
 	int *actual = calloc(10, sizeof(int));
 	TEST_ASSERT_NOT_NULL(actual);
 
-	TEST_ASSERT_TRUE(array_pushback(actual, 10, 42));
+	TEST_ASSERT_TRUE(array_pushback(&actual, 10, 42));
 	TEST_ASSERT_EQUAL(42, actual[10]);
 
 	free(actual);
@@ -36,7 +36,7 @@ static void test_array_popback()
 {
 	int *actual = calloc(10, sizeof(int));
 	actual[9] = 42;
-	TEST_ASSERT_TRUE(array_popback(actual, 10));
+	TEST_ASSERT_TRUE(array_popback(&actual, 10));
 
 	TEST_ASSERT_EACH_EQUAL_INT(0, actual, 9);
 
@@ -49,7 +49,7 @@ static void test_array_insert()
 
 	int expected[] = { 0, 0, 0, 0, 1, 2, 3, 4, 0, 0, 0, 0 };
 	int insert[] = { 1, 2, 3, 4 };
-	TEST_ASSERT_TRUE(array_insert(actual, 8, insert, 4, 4));
+	TEST_ASSERT_TRUE(array_insert(&actual, 8, insert, 4, 4));
 	TEST_ASSERT_EQUAL_INT_ARRAY(expected, actual, 5);
 
 	free(actual);
@@ -67,7 +67,7 @@ static void test_array_remove()
 	actual[6] = 6;
 	actual[7] = 7;
 
-	TEST_ASSERT_TRUE(array_remove(actual, 8, 2, 4));
+	TEST_ASSERT_TRUE(array_remove(&actual, 8, 2, 4));
 	int expected[4] = { 0, 1, 6, 7 };
 	TEST_ASSERT_EQUAL_INT_ARRAY(expected, actual, 4);
 
