@@ -23,5 +23,5 @@ void cols_bin_to_dec(int m, int n, int arr[m][n], int nums[n])
 
 int max_element_position(int arr[], int n)
 {
-
+    return 0;
 }
